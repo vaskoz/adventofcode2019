@@ -19,6 +19,8 @@ func TestMain(t *testing.T) {
 	if expected := "5049684"; expected != result {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
+
+	file.Close()
 }
 
 func BenchmarkMain(b *testing.B) {
@@ -29,5 +31,6 @@ func BenchmarkMain(b *testing.B) {
 		out = buff
 
 		main()
+		file.Close()
 	}
 }
