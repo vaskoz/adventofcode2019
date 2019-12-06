@@ -89,10 +89,7 @@ func main() {
 
 				pc += 4
 			case 4:
-				if code == 0 {
-					readFrom := opcodes[pc+1]
-					fmt.Fprintln(out, opcodes[readFrom])
-				} else {
+				if code == 1 {
 					fmt.Fprintln(out, opcodes[pc+1])
 				}
 

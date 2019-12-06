@@ -2,35 +2,41 @@ package main
 
 import (
 	"bytes"
-	"os"
 	"strings"
 	"testing"
 )
 
 func TestMain(t *testing.T) {
-	file, _ := os.Open("input.txt")
-	in = file
+	in = strings.NewReader("1\n")
 	buff := new(bytes.Buffer)
 	out = buff
 
 	main()
 
 	result := strings.TrimSpace(buff.String())
-	if expected := "3409710"; expected != result {
+	expected := `0
+0
+0
+0
+0
+0
+0
+0
+0
+13547311
+`
+
+	if strings.TrimSpace(expected) != result {
 		t.Errorf("Expected %v, got %v", expected, result)
 	}
-
-	file.Close()
 }
 
 func BenchmarkMain(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		file, _ := os.Open("input.txt")
-		in = file
+		in = strings.NewReader("1\n")
 		buff := new(bytes.Buffer)
 		out = buff
 
 		main()
-		file.Close()
 	}
 }
